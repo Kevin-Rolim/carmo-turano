@@ -3,64 +3,47 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Users, BookOpen, Trophy, Bell, ArrowRight } from "lucide-react";
 import schoolHero from "@/assets/school-hero.jpg";
-import classroomStudy from "@/assets/classroom-study.jpg";
-import scienceFair from "@/assets/science-fair.jpg";
 import { Link } from "react-router-dom";
-
 const Index = () => {
-  const announcements = [
-    {
-      id: 1,
-      title: "Reunião de Pais - 3° Bimestre",
-      date: "2024-09-15",
-      content: "Reunião para apresentação dos resultados do 3° bimestre. Presença obrigatória.",
-      urgent: true
-    },
-    {
-      id: 2,
-      title: "Feira de Ciências 2024",
-      date: "2024-10-20",
-      content: "Inscrições abertas para a Feira de Ciências. Prazo até 30/09.",
-      urgent: false
-    },
-    {
-      id: 3,
-      title: "Volta às Aulas",
-      date: "2024-08-01",
-      content: "Início do segundo semestre letivo. Bem-vindos de volta!",
-      urgent: false
-    }
-  ];
-
-  const achievements = [
-    {
-      title: "1° Lugar na Olimpíada Brasileira de Matemática",
-      student: "Ana Clara Silva - 9° Ano",
-      date: "Agosto 2024"
-    },
-    {
-      title: "Menção Honrosa em Redação",
-      student: "João Pedro Santos - 8° Ano",
-      date: "Julho 2024"
-    },
-    {
-      title: "Destaque Regional em Ciências",
-      student: "Turma do 7° Ano B",
-      date: "Junho 2024"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen">
+  const announcements = [{
+    id: 1,
+    title: "Reunião de Pais - 3° Bimestre",
+    date: "2024-09-15",
+    content: "Reunião para apresentação dos resultados do 3° bimestre. Presença obrigatória.",
+    urgent: true
+  }, {
+    id: 2,
+    title: "Feira de Ciências 2024",
+    date: "2024-10-20",
+    content: "Inscrições abertas para a Feira de Ciências. Prazo até 30/09.",
+    urgent: false
+  }, {
+    id: 3,
+    title: "Volta às Aulas",
+    date: "2024-08-01",
+    content: "Início do segundo semestre letivo. Bem-vindos de volta!",
+    urgent: false
+  }];
+  const achievements = [{
+    title: "1° Lugar na Olimpíada Brasileira de Matemática",
+    student: "Ana Clara Silva - 9° Ano",
+    date: "Agosto 2024"
+  }, {
+    title: "Menção Honrosa em Redação",
+    student: "João Pedro Santos - 8° Ano",
+    date: "Julho 2024"
+  }, {
+    title: "Destaque Regional em Ciências",
+    student: "Turma do 7° Ano B",
+    date: "Junho 2024"
+  }];
+  return <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[600px] bg-gradient-to-br from-primary/90 to-secondary/80 overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${schoolHero})`,
-            backgroundBlendMode: 'multiply'
-          }}
-        />
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+        backgroundImage: `url(${schoolHero})`,
+        backgroundBlendMode: 'multiply'
+      }} />
         <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
           <div className="max-w-2xl text-white">
             <h1 className="text-5xl font-bold mb-6 leading-tight">
@@ -105,8 +88,8 @@ const Index = () => {
               <div className="text-muted-foreground">Anos de História</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-success mb-2">98%</div>
-              <div className="text-muted-foreground">Aprovação Geral</div>
+              <div className="text-3xl font-bold text-success mb-2">95%</div>
+              <div className="text-muted-foreground">Aprovação SARESP</div>
             </div>
           </div>
         </div>
@@ -132,16 +115,13 @@ const Index = () => {
               </div>
               
               <div className="space-y-4">
-                {announcements.map((announcement) => (
-                  <Card key={announcement.id} className="hover:shadow-lg transition-shadow">
+                {announcements.map(announcement => <Card key={announcement.id} className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between mb-3">
                         <h3 className="font-semibold text-foreground flex-1">
                           {announcement.title}
                         </h3>
-                        {announcement.urgent && (
-                          <Badge variant="destructive" className="ml-2">Urgente</Badge>
-                        )}
+                        {announcement.urgent && <Badge variant="destructive" className="ml-2">Urgente</Badge>}
                       </div>
                       <p className="text-muted-foreground mb-3">{announcement.content}</p>
                       <div className="flex items-center text-sm text-muted-foreground">
@@ -149,8 +129,7 @@ const Index = () => {
                         {new Date(announcement.date).toLocaleDateString('pt-BR')}
                       </div>
                     </CardContent>
-                  </Card>
-                ))}
+                  </Card>)}
               </div>
             </div>
 
@@ -167,8 +146,7 @@ const Index = () => {
               </div>
               
               <div className="space-y-4">
-                {achievements.map((achievement, index) => (
-                  <Card key={index} className="bg-gradient-to-br from-accent/5 to-success/5 border-accent/20">
+                {achievements.map((achievement, index) => <Card key={index} className="bg-gradient-to-br from-accent/5 to-success/5 border-accent/20">
                     <CardContent className="p-4">
                       <h4 className="font-medium text-foreground mb-2">
                         {achievement.title}
@@ -180,95 +158,14 @@ const Index = () => {
                         {achievement.date}
                       </div>
                     </CardContent>
-                  </Card>
-                ))}
+                  </Card>)}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Academic Excellence Section */}
-      <section className="py-16 bg-gradient-to-br from-muted/20 to-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Excelência Acadêmica</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Nossa escola se destaca por proporcionar um ambiente educacional de qualidade, 
-              preparando nossos alunos para os desafios do futuro.
-            </p>
-          </div>
-          
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6">
-              <div className="bg-card p-6 rounded-lg border shadow-sm">
-                <h3 className="text-xl font-semibold mb-3 text-primary">Ensino de Qualidade</h3>
-                <p className="text-muted-foreground">
-                  Corpo docente qualificado e metodologia de ensino moderna, focando no desenvolvimento 
-                  integral dos nossos estudantes através de práticas pedagógicas inovadoras.
-                </p>
-              </div>
-              
-              <div className="bg-card p-6 rounded-lg border shadow-sm">
-                <h3 className="text-xl font-semibold mb-3 text-secondary">Infraestrutura Completa</h3>
-                <p className="text-muted-foreground">
-                  Salas de aula modernas, laboratórios equipados, biblioteca ampla e espaços de convivência 
-                  que proporcionam o melhor ambiente para o aprendizado.
-                </p>
-              </div>
-            </div>
-            
-            <div className="relative">
-              <img
-                src={classroomStudy}
-                alt="Estudantes em sala de aula moderna"
-                className="w-full h-80 object-cover rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects and Activities */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Projetos e Atividades</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Participamos ativamente de feiras de ciências, olimpíadas acadêmicas e projetos 
-              que enriquecem a experiência educacional dos nossos alunos.
-            </p>
-          </div>
-          
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div className="relative">
-              <img
-                src={scienceFair}
-                alt="Feira de ciências da escola"
-                className="w-full h-80 object-cover rounded-lg shadow-lg"
-              />
-            </div>
-            
-            <div className="space-y-6">
-              <div className="bg-card p-6 rounded-lg border shadow-sm">
-                <h3 className="text-xl font-semibold mb-3 text-accent">Feira de Ciências Annual</h3>
-                <p className="text-muted-foreground">
-                  Evento que estimula a criatividade e o pensamento científico, onde nossos alunos 
-                  apresentam projetos inovadores e desenvolvem habilidades de pesquisa e apresentação.
-                </p>
-              </div>
-              
-              <div className="bg-card p-6 rounded-lg border shadow-sm">
-                <h3 className="text-xl font-semibold mb-3 text-success">Olimpíadas Acadêmicas</h3>
-                <p className="text-muted-foreground">
-                  Participação ativa em olimpíadas de matemática, português, física e outras disciplinas, 
-                  com excelentes resultados e reconhecimento regional.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Quick Links */}
       <section className="py-12 bg-gradient-to-r from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-center mb-8 text-foreground">Acesso Rápido</h2>
@@ -291,7 +188,7 @@ const Index = () => {
               <Card className="hover:shadow-lg transition-all group-hover:scale-105">
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="w-6 h-6 text-secondary" />
+                    
                   </div>
                   <h3 className="font-semibold mb-2">Fale Conosco</h3>
                   <p className="text-sm text-muted-foreground">
@@ -301,24 +198,10 @@ const Index = () => {
               </Card>
             </Link>
 
-            <Link to="/historia" className="group">
-              <Card className="hover:shadow-lg transition-all group-hover:scale-105">
-                <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Calendar className="w-6 h-6 text-accent" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Nossa História</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Conheça a trajetória de mais de 25 anos de educação de qualidade.
-                  </p>
-                </CardContent>
-              </Card>
-            </Link>
+            
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
