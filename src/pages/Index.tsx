@@ -44,7 +44,7 @@ const Index = () => {
         backgroundImage: `url(${schoolHero})`,
         backgroundBlendMode: 'multiply'
       }} />
-        <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
+        <div className="relative z-10 container mx-auto px-4 h-full flex items-center bg-blue-400">
           <div className="max-w-2xl text-white">
             <h1 className="text-5xl font-bold mb-6 leading-tight">
               Escola Estadual Voluntário Carmo Turano
