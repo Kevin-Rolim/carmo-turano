@@ -22,7 +22,7 @@ const Repositorio = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedGrade, setSelectedGrade] = useState("all");
   const [selectedYear, setSelectedYear] = useState("all");
-  const [selectedSubject, setSelectedSubject] = useState("all");
+  
 
   const mockWorks: WorkItem[] = [
     {
@@ -93,9 +93,8 @@ const Repositorio = () => {
     }
   ];
 
-  const grades = ["6º Ano", "7º Ano", "8º Ano", "9º Ano", "1º Ano", "2º Ano", "3º Ano"];
+  const grades = ["1º Ano", "2º Ano", "3º Ano"];
   const years = [2024, 2023, 2022, 2021, 2020];
-  const subjects = ["Matemática", "Português", "História", "Geografia", "Ciências", "Física", "Química", "Literatura", "Inglês"];
 
   const filteredWorks = mockWorks.filter(work => {
     const matchesSearch = work.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -103,9 +102,8 @@ const Repositorio = () => {
                          work.subject.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesGrade = selectedGrade === "all" || work.grade.includes(selectedGrade);
     const matchesYear = selectedYear === "all" || work.year.toString() === selectedYear;
-    const matchesSubject = selectedSubject === "all" || work.subject === selectedSubject;
 
-    return matchesSearch && matchesGrade && matchesYear && matchesSubject;
+    return matchesSearch && matchesGrade && matchesYear;
   });
 
   return (
@@ -131,8 +129,8 @@ const Repositorio = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-              <div className="lg:col-span-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="lg:col-span-1">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                   <Input
@@ -146,7 +144,7 @@ const Repositorio = () => {
               
               <Select value={selectedGrade} onValueChange={setSelectedGrade}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Série" />
+                  <SelectValue placeholder="Série do Ensino Médio" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">Todas as Séries</SelectItem>
@@ -164,18 +162,6 @@ const Repositorio = () => {
                   <SelectItem value="all">Todos os Anos</SelectItem>
                   {years.map(year => (
                     <SelectItem key={year} value={year.toString()}>{year}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              <Select value={selectedSubject} onValueChange={setSelectedSubject}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Disciplina" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">Todas as Disciplinas</SelectItem>
-                  {subjects.map(subject => (
-                    <SelectItem key={subject} value={subject}>{subject}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>

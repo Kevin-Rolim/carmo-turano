@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, School, Users, Trophy, BookOpen } from "lucide-react";
+import libraryImage from "@/assets/library.jpg";
 
 const Historia = () => {
   const milestones = [
@@ -93,40 +94,62 @@ const Historia = () => {
 
         {/* Mission and Vision */}
         <section className="mb-16">
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-              <CardHeader>
-                <CardTitle className="flex items-center text-primary">
-                  <School className="w-6 h-6 mr-3" />
-                  Nossa Missão
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed">
-                  Promover uma educação pública de excelência, formando cidadãos conscientes, 
-                  críticos e preparados para os desafios do século XXI, através de práticas 
-                  pedagógicas inovadoras e inclusivas que respeitem a diversidade e 
-                  potencializem o desenvolvimento integral de cada estudante.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="grid lg:grid-cols-3 gap-8 items-start">
+            <div className="lg:col-span-2 space-y-6">
+              <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-primary">
+                    <School className="w-6 h-6 mr-3" />
+                    Nossa Missão
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Promover uma educação pública de excelência, formando cidadãos conscientes, 
+                    críticos e preparados para os desafios do século XXI, através de práticas 
+                    pedagógicas inovadoras e inclusivas que respeitem a diversidade e 
+                    potencializem o desenvolvimento integral de cada estudante.
+                  </p>
+                </CardContent>
+              </Card>
 
-            <Card className="bg-gradient-to-br from-secondary/5 to-secondary/10 border-secondary/20">
-              <CardHeader>
-                <CardTitle className="flex items-center text-secondary">
-                  <BookOpen className="w-6 h-6 mr-3" />
-                  Nossa Visão
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed">
-                  Ser reconhecida como uma instituição de referência em educação pública 
-                  no interior paulista, destacando-se pela qualidade do ensino, 
-                  pela formação humanística e pela preparação de jovens capazes de 
-                  contribuir positivamente para a sociedade e o desenvolvimento regional.
-                </p>
-              </CardContent>
-            </Card>
+              <Card className="bg-gradient-to-br from-secondary/5 to-secondary/10 border-secondary/20">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-secondary">
+                    <BookOpen className="w-6 h-6 mr-3" />
+                    Nossa Visão
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Ser reconhecida como uma instituição de referência em educação pública 
+                    no interior paulista, destacando-se pela qualidade do ensino, 
+                    pela formação humanística e pela preparação de jovens capazes de 
+                    contribuir positivamente para a sociedade e o desenvolvimento regional.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+            
+            <div className="lg:col-span-1">
+              <div className="relative">
+                <img
+                  src={libraryImage}
+                  alt="Biblioteca da escola com ambiente de estudos"
+                  className="w-full h-80 object-cover rounded-lg shadow-lg"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg"></div>
+              </div>
+              <Card className="mt-4 bg-accent/5 border-accent/20">
+                <CardContent className="p-4">
+                  <h4 className="font-semibold text-accent mb-2">Ambiente Educacional</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Nossa biblioteca e espaços de estudo proporcionam um ambiente acolhedor 
+                    e propício ao aprendizado e desenvolvimento intelectual dos estudantes.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </section>
 

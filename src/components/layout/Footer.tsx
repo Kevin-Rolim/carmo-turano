@@ -49,9 +49,6 @@ export const Footer = () => {
               <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">
                 Portal do Aluno
               </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">
-                SARESP
-              </a>
             </div>
           </div>
         </div>

@@ -17,8 +17,10 @@ export const Header = () => {
               <School className="w-6 h-6 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-foreground">E.E. Voluntário Carmo Turano</h1>
-              <p className="text-sm text-muted-foreground">Cedral - SP</p>
+              <a href="/" className="block">
+                <h1 className="text-lg font-bold text-foreground hover:text-primary transition-colors">E.E. Voluntário Carmo Turano</h1>
+                <p className="text-sm text-muted-foreground">Cedral - SP</p>
+              </a>
             </div>
           </div>
 

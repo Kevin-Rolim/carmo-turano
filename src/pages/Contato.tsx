@@ -30,7 +30,8 @@ const Contato = () => {
     subject: "",
     message: "",
     isAnonymous: false,
-    agreeTerms: false
+    agreeTerms: false,
+    agreeLegalTerms: false
   });
 
   const contactTypes = [
@@ -57,8 +58,8 @@ const Contato = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.agreeTerms) {
-      toast.error("Você deve aceitar os termos para continuar.");
+    if (!formData.agreeTerms || !formData.agreeLegalTerms) {
+      toast.error("Você deve aceitar todos os termos para continuar.");
       return;
     }
 
@@ -78,7 +79,8 @@ const Contato = () => {
       subject: "",
       message: "",
       isAnonymous: false,
-      agreeTerms: false
+      agreeTerms: false,
+      agreeLegalTerms: false
     });
   };
 
@@ -230,15 +232,35 @@ const Contato = () => {
                   </div>
 
                   {/* Anonymous Option */}
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="anonymous" 
-                      checked={formData.isAnonymous}
-                      onCheckedChange={(checked) => setFormData({...formData, isAnonymous: checked as boolean})}
-                    />
-                    <Label htmlFor="anonymous" className="text-sm">
-                      Enviar de forma anônima
-                    </Label>
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox 
+                        id="anonymous" 
+                        checked={formData.isAnonymous}
+                        onCheckedChange={(checked) => setFormData({...formData, isAnonymous: checked as boolean})}
+                      />
+                      <Label htmlFor="anonymous" className="text-sm">
+                        Enviar de forma anônima
+                      </Label>
+                    </div>
+                    
+                    {formData.isAnonymous && (
+                      <div className="bg-muted/30 p-4 rounded-lg space-y-3">
+                        <div className="space-y-2">
+                          <Label htmlFor="anonymousName">Nome (não será divulgado) *</Label>
+                          <Input
+                            id="anonymousName"
+                            value={formData.name}
+                            onChange={(e) => setFormData({...formData, name: e.target.value})}
+                            placeholder="Seu nome (apenas para controle interno)"
+                            required={formData.isAnonymous}
+                          />
+                          <p className="text-xs text-muted-foreground">
+                            ⚠️ Seu nome será usado apenas para controle interno e não será divulgado de forma alguma.
+                          </p>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {!formData.isAnonymous && (
@@ -310,16 +332,33 @@ const Contato = () => {
                   </div>
 
                   {/* Terms */}
-                  <div className="flex items-start space-x-2">
-                    <Checkbox 
-                      id="terms" 
-                      checked={formData.agreeTerms}
-                      onCheckedChange={(checked) => setFormData({...formData, agreeTerms: checked as boolean})}
-                    />
-                    <Label htmlFor="terms" className="text-sm text-muted-foreground leading-relaxed">
-                      Aceito que minha mensagem seja processada pela escola e entendo que, 
-                      em caso de mensagens não anônimas, poderei receber retorno via email ou telefone.
-                    </Label>
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-2">
+                      <Checkbox 
+                        id="terms" 
+                        checked={formData.agreeTerms}
+                        onCheckedChange={(checked) => setFormData({...formData, agreeTerms: checked as boolean})}
+                      />
+                      <Label htmlFor="terms" className="text-sm text-muted-foreground leading-relaxed">
+                        Aceito que minha mensagem seja processada pela escola e entendo que, 
+                        em caso de mensagens não anônimas, poderei receber retorno via email ou telefone.
+                      </Label>
+                    </div>
+
+                    <div className="flex items-start space-x-2">
+                      <Checkbox 
+                        id="legalTerms" 
+                        checked={formData.agreeLegalTerms}
+                        onCheckedChange={(checked) => setFormData({...formData, agreeLegalTerms: checked as boolean})}
+                      />
+                      <Label htmlFor="legalTerms" className="text-sm text-muted-foreground leading-relaxed">
+                        <span className="font-semibold text-destructive">Declaro estar ciente das consequências legais:</span>
+                        <br />• <strong>Denunciação Caluniosa (Art. 339 do Código Penal):</strong> É crime denunciar sabendo que a pessoa é inocente.
+                        <br />• <strong>Comunicação Falsa de Crime (Art. 340 do Código Penal):</strong> É crime comunicar ocorrência que não aconteceu.
+                        <br />• O denunciante que apresenta informações falsas pode ser responsabilizado administrativa e criminalmente.
+                        <br />• Denunciações falsas podem causar danos irreparáveis à reputação da pessoa acusada.
+                      </Label>
+                    </div>
                   </div>
 
                   {/* Submit */}
