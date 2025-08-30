@@ -80,26 +80,24 @@ export const AccessibilityControls = () => {
               <label className="text-sm font-medium text-foreground mb-2 block">
                 Tamanho da Fonte: {fontSizes[currentFontSize].name}
               </label>
-              <div className="flex items-center justify-between space-x-2">
+              <div className="flex items-center space-x-1">
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={decreaseFontSize}
                   disabled={currentFontSize === 0}
-                  className="flex-1"
+                  className="flex-1 text-xs px-2"
                 >
-                  <Minus className="w-4 h-4 mr-1" />
-                  Diminuir
+                  <Minus className="w-3 h-3" />
                 </Button>
                 
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={resetFontSize}
-                  className="flex-1"
+                  className="flex-1 text-xs px-2"
                 >
-                  <RotateCcw className="w-4 h-4 mr-1" />
-                  Normal
+                  <RotateCcw className="w-3 h-3" />
                 </Button>
                 
                 <Button
@@ -107,11 +105,15 @@ export const AccessibilityControls = () => {
                   size="sm"
                   onClick={increaseFontSize}
                   disabled={currentFontSize === fontSizes.length - 1}
-                  className="flex-1"
+                  className="flex-1 text-xs px-2"
                 >
-                  <Plus className="w-4 h-4 mr-1" />
-                  Aumentar
+                  <Plus className="w-3 h-3" />
                 </Button>
+              </div>
+              <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                <span>Diminuir</span>
+                <span>Normal</span>
+                <span>Aumentar</span>
               </div>
             </div>
 
