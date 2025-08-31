@@ -184,11 +184,25 @@ const Index = () => {
               </Card>
             </Link>
             
+            <Link to="/historia" className="group">
+              <Card className="hover:shadow-lg transition-all group-hover:scale-105">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <BookOpen className="w-6 h-6 text-accent" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Nossa História</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Conheça a trajetória de mais de 28 anos da nossa escola e seus marcos importantes.
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+
             <Link to="/contato" className="group">
               <Card className="hover:shadow-lg transition-all group-hover:scale-105">
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    
+                    <Users className="w-6 h-6 text-secondary" />
                   </div>
                   <h3 className="font-semibold mb-2">Fale Conosco</h3>
                   <p className="text-sm text-muted-foreground">
@@ -197,8 +211,6 @@ const Index = () => {
                 </CardContent>
               </Card>
             </Link>
-
-            
           </div>
         </div>
       </section>
