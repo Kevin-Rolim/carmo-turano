@@ -2,62 +2,62 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, School, Users, Trophy, BookOpen } from "lucide-react";
 import libraryImage from "@/assets/library.jpg";
-
 const Historia = () => {
-  const milestones = [
-    {
-      year: "1996",
-      title: "Fundação da Escola",
-      description: "A Escola Estadual Voluntário Carmo Turano foi fundada para atender a crescente demanda educacional da região de Cedral.",
-      icon: School,
-      color: "primary"
-    },
-    {
-      year: "2001",
-      title: "Primeiro Ensino Médio",
-      description: "Implementação do Ensino Médio, ampliando a oferta educacional para a comunidade local.",
-      icon: BookOpen,
-      color: "secondary"
-    },
-    {
-      year: "2008",
-      title: "Laboratório de Informática",
-      description: "Inauguração do primeiro laboratório de informática, modernizando o ensino e incluindo tecnologia na educação.",
-      icon: Users,
-      color: "accent"
-    },
-    {
-      year: "2012",
-      title: "Reforma e Ampliação",
-      description: "Grande reforma das instalações e construção de novas salas de aula, biblioteca e quadra poliesportiva.",
-      icon: School,
-      color: "success"
-    },
-    {
-      year: "2018",
-      title: "Primeira Colocação Regional",
-      description: "Alunos conquistam o primeiro lugar na Olimpíada Brasileira de Matemática na categoria regional.",
-      icon: Trophy,
-      color: "warning"
-    },
-    {
-      year: "2024",
-      title: "Modernização Digital",
-      description: "Implementação de plataformas digitais e renovação completa dos equipamentos tecnológicos.",
-      icon: BookOpen,
-      color: "primary"
-    }
-  ];
-
-  const statistics = [
-    { label: "Anos de Fundação", value: "28 anos", description: "De história e tradição educacional" },
-    { label: "Alunos Formados", value: "15.000+", description: "Cidadãos preparados para o futuro" },
-    { label: "Professores", value: "200+", description: "Educadores que passaram pela escola" },
-    { label: "Premiações", value: "50+", description: "Reconhecimentos e conquistas" }
-  ];
-
-  return (
-    <div className="min-h-screen py-8">
+  const milestones = [{
+    year: "1996",
+    title: "Fundação da Escola",
+    description: "A Escola Estadual Voluntário Carmo Turano foi fundada para atender a crescente demanda educacional da região de Cedral.",
+    icon: School,
+    color: "primary"
+  }, {
+    year: "2001",
+    title: "Primeiro Ensino Médio",
+    description: "Implementação do Ensino Médio, ampliando a oferta educacional para a comunidade local.",
+    icon: BookOpen,
+    color: "secondary"
+  }, {
+    year: "2008",
+    title: "Laboratório de Informática",
+    description: "Inauguração do primeiro laboratório de informática, modernizando o ensino e incluindo tecnologia na educação.",
+    icon: Users,
+    color: "accent"
+  }, {
+    year: "2012",
+    title: "Reforma e Ampliação",
+    description: "Grande reforma das instalações e construção de novas salas de aula, biblioteca e quadra poliesportiva.",
+    icon: School,
+    color: "success"
+  }, {
+    year: "2018",
+    title: "Primeira Colocação Regional",
+    description: "Alunos conquistam o primeiro lugar na Olimpíada Brasileira de Matemática na categoria regional.",
+    icon: Trophy,
+    color: "warning"
+  }, {
+    year: "2024",
+    title: "Modernização Digital",
+    description: "Implementação de plataformas digitais e renovação completa dos equipamentos tecnológicos.",
+    icon: BookOpen,
+    color: "primary"
+  }];
+  const statistics = [{
+    label: "Anos de Fundação",
+    value: "28 anos",
+    description: "De história e tradição educacional"
+  }, {
+    label: "Alunos Formados",
+    value: "15.000+",
+    description: "Cidadãos preparados para o futuro"
+  }, {
+    label: "Professores",
+    value: "200+",
+    description: "Educadores que passaram pela escola"
+  }, {
+    label: "Premiações",
+    value: "50+",
+    description: "Reconhecimentos e conquistas"
+  }];
+  return <div className="min-h-screen py-8">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
@@ -74,8 +74,7 @@ const Historia = () => {
         {/* Statistics */}
         <section className="mb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {statistics.map((stat, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+            {statistics.map((stat, index) => <Card key={index} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="text-3xl font-bold text-primary mb-2">
                     {stat.value}
@@ -87,8 +86,7 @@ const Historia = () => {
                     {stat.description}
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </section>
 
@@ -133,21 +131,11 @@ const Historia = () => {
             
             <div className="lg:col-span-1">
               <div className="relative">
-                <img
-                  src={libraryImage}
-                  alt="Biblioteca da escola com ambiente de estudos"
-                  className="w-full h-80 object-cover rounded-lg shadow-lg"
-                />
+                <img src={libraryImage} alt="Biblioteca da escola com ambiente de estudos" className="w-full h-80 object-cover rounded-lg shadow-lg" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg"></div>
               </div>
               <Card className="mt-4 bg-accent/5 border-accent/20">
-                <CardContent className="p-4">
-                  <h4 className="font-semibold text-accent mb-2">Ambiente Educacional</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Nossa biblioteca e espaços de estudo proporcionam um ambiente acolhedor 
-                    e propício ao aprendizado e desenvolvimento intelectual dos estudantes.
-                  </p>
-                </CardContent>
+                
               </Card>
             </div>
           </div>
@@ -165,11 +153,9 @@ const Historia = () => {
             
             <div className="space-y-8">
               {milestones.map((milestone, index) => {
-                const Icon = milestone.icon;
-                const isEven = index % 2 === 0;
-                
-                return (
-                  <div key={index} className={`relative flex items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} flex-row`}>
+              const Icon = milestone.icon;
+              const isEven = index % 2 === 0;
+              return <div key={index} className={`relative flex items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} flex-row`}>
                     {/* Timeline dot */}
                     <div className={`absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-${milestone.color} rounded-full flex items-center justify-center z-10`}>
                       <Icon className="w-4 h-4 text-white" />
@@ -193,9 +179,8 @@ const Historia = () => {
                         </CardContent>
                       </Card>
                     </div>
-                  </div>
-                );
-              })}
+                  </div>;
+            })}
             </div>
           </div>
         </section>
@@ -242,8 +227,6 @@ const Historia = () => {
           </Card>
         </section>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Historia;
