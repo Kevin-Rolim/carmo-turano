@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Painel Mestre</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 16px; max-width: 900px; margin:auto; }
+    input, textarea, select { width:100%; padding:8px; margin:6px 0; }
+    .kv { display:flex; gap:8px; }
+    .kv input { flex:1; }
+    button { padding:8px 12px; border-radius:6px; }
+    .hidden { display:none; }
+  </style>
+</head>
+<body>
+  <h1>Painel Mestre — Carmo Turano (exemplo)</h1>
+
+  <div id="loginBox">
+    <h3>Entrar</h3>
+    <input id="password" type="password" placeholder="Senha mestra"/>
+    <button id="btnLogin">Entrar</button>
+    <div id="loginMsg"></div>
+  </div>
+
+  <div id="app" class="hidden">
+    <button id="btnLogout">Sair</button>
+    <h3>Criar novo registro</h3>
+    <label>Tipo</label>
+    <select id="type">
+      <option value="anuncio">Anúncio</option>
+      <option value="evento">Evento</option>
+      <option value="clube">Clube</option>
+      <option value="produto">Produto</option>
+      <option value="noticia">Notícia</option>
+    </select>
+
+    <label>Título</label><input id="title" />
+    <label>Conteúdo / descrição</label><textarea id="content" rows="4"></textarea>
+
+    <h4>Campos parametrizados</h4>
+    <div id="kvList"></div>
+    <div style="display:flex;gap:8px;">
+      <input id="kvKey" placeholder="campo (ex: data, local, quantidade)"/>
+      <input id="kvValue" placeholder="valor"/>
+      <button id="addKv">Adicionar campo</button>
+    </div>
+
+    <label><input type="checkbox" id="published"/> Publicado</label>
+    <br/><br/>
+    <button id="create">Criar</button>
+    <div id="result"></div>
+
+    <hr/>
+    <h3>Registros existentes</h3>
+    <div id="itemsList"></div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
