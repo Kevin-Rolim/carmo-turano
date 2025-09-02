@@ -13,9 +13,9 @@ export const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-glow">
+            <a href="/" className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-glow hover:scale-105 transition-transform">
               <School className="w-6 h-6 text-primary-foreground" />
-            </div>
+            </a>
             <div>
               <a href="/" className="block">
                 <h1 className="text-lg font-bold text-foreground hover:text-primary transition-colors">E.E. Voluntário Carmo Turano</h1>
