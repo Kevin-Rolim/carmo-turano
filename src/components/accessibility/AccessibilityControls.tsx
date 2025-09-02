@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Accessibility, Plus, Minus, RotateCcw } from 'lucide-react';
+import { Accessibility, Plus, Minus, RotateCcw, Moon, Sun } from 'lucide-react';
 import accessibilityIcon from '@/assets/accessibility-icon.jpg';
 
 interface FontSize {
@@ -21,6 +21,7 @@ const fontSizes: FontSize[] = [
 
 export const AccessibilityControls = () => {
   const [currentFontSize, setCurrentFontSize] = useState(2); // Normal por padrão
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -28,12 +29,24 @@ export const AccessibilityControls = () => {
     if (savedSize) {
       setCurrentFontSize(parseInt(savedSize));
     }
+    
+    const savedDarkMode = localStorage.getItem('accessibility-dark-mode');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const shouldUseDark = savedDarkMode ? savedDarkMode === 'true' : systemPrefersDark;
+    
+    setIsDarkMode(shouldUseDark);
+    document.documentElement.classList.toggle('dark', shouldUseDark);
   }, []);
 
   useEffect(() => {
     document.documentElement.style.fontSize = `${fontSizes[currentFontSize].scale}rem`;
     localStorage.setItem('accessibility-font-size', currentFontSize.toString());
   }, [currentFontSize]);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDarkMode);
+    localStorage.setItem('accessibility-dark-mode', isDarkMode.toString());
+  }, [isDarkMode]);
 
   const increaseFontSize = () => {
     if (currentFontSize < fontSizes.length - 1) {
@@ -49,6 +62,10 @@ export const AccessibilityControls = () => {
 
   const resetFontSize = () => {
     setCurrentFontSize(2);
+  };
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
   };
 
   return (
@@ -117,9 +134,33 @@ export const AccessibilityControls = () => {
               </div>
             </div>
 
+            <div>
+              <label className="text-sm font-medium text-foreground mb-2 block">
+                Contraste da Página
+              </label>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={toggleDarkMode}
+                className="w-full flex items-center justify-center space-x-2"
+              >
+                {isDarkMode ? (
+                  <>
+                    <Sun className="w-4 h-4" />
+                    <span>Modo Claro</span>
+                  </>
+                ) : (
+                  <>
+                    <Moon className="w-4 h-4" />
+                    <span>Modo Noturno</span>
+                  </>
+                )}
+              </Button>
+            </div>
+
             <div className="pt-2 border-t">
               <p className="text-xs text-muted-foreground">
-                Use estes controles para ajustar o tamanho do texto e melhorar a legibilidade do site.
+                Use estes controles para ajustar o tamanho do texto e o contraste da página para melhorar a legibilidade e acessibilidade do site.
               </p>
             </div>
           </div>
